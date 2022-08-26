@@ -26,3 +26,6 @@ text-align: center;
 width:120px;
 border:1px solid 
 `
+export const TR = styled.tr`
+
+`

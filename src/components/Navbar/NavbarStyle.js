@@ -16,5 +16,15 @@ border:none;
 color:white;
 margin: 0 40px;
 background-color: transparent;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-weight: 600; 
 font-size: larger;
 `
+export const NavButton = styled.span`
+a{
+    text-decoration: none;
+    font-size: larger;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    font-weight: 600;
+}`
