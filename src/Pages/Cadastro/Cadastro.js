@@ -4,7 +4,7 @@ import { useState } from 'react';
 export const Cadastro =()=>{
 
     const[livro, setLivro]=useState(
-        {nReg:'',data:'',autor:'',titulo:'', volume:'',exemplar:'',editora:'',ano:'',prateleira:''}
+        {nReg:'',data:'',autor:'',titulo:'', volume:'',exemplar:'',editora:'',ano:'',prateleira:'',aluno:'',devolucao:''}
     )
     let collection='livro';
     const handleCadastroLivro=()=>{
