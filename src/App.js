@@ -5,6 +5,7 @@ import { Cadastro } from './Pages/Cadastro/Cadastro';
 import {Home} from './Pages/Home/Home';
 import {Navbar} from './components/Navbar/Navbar';
 import{useState} from 'react';
+import CadastroAlunos from './Pages/CadastroAlunos/CadastroAlunos';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path='/cadastro' element={<Cadastro />} />
+          <Route path='/cadastro-alunos' element={<CadastroAlunos />} />
           <Route path='/home' element={<Home user={user} setUser={setUser}/>}/>
         </Routes>
       </BrowserRouter>

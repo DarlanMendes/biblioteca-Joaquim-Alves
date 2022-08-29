@@ -19,7 +19,10 @@ export const Navbar = () => {
                     <Link to="/home"> Home</Link>
                 </C.NavButton>
                 <C.NavButton>
-                    <Link to="/cadastro"> Cadastro</Link>
+                    <Link to="/cadastro"> Cadastro de livros</Link>
+                </C.NavButton>
+                <C.NavButton>
+                    <Link to="/cadastro-alunos"> Cadastro de alunos</Link>
                 </C.NavButton>
                 <C.LogOutButton onClick={handleLogOut}>Sair</C.LogOutButton>
 
