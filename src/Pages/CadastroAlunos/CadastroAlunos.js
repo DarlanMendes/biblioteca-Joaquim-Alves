@@ -1,13 +1,33 @@
 import * as C from './CadastroAlunosStyle';
 import { useState } from 'react';
 import aluno_avatar from'../../assets/aluno_avatar.png';
+
 const CadastroAlunos =()=>{
 
     const[aluno,setAluno]=useState({nome:'',foto:aluno_avatar,serie:'',turma:'',turno:'',endereco:'',telefone:''})
     const handleCadastroAluno =()=>{
 
     }
-
+    const carregaFotoAluno= async(e)=>{
+        console.log(e.target.files);
+        let file = e.target.files[0];
+        let base64 = await converteBase64(file);
+        console.log(base64);
+        let foto='foto';
+       setAluno({...aluno,[foto]:base64})
+    }
+    const converteBase64 =(file)=>{
+        return new Promise((resolve,reject)=>{
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload=()=>{
+                resolve(fileReader.result);
+            };
+            fileReader.onerror=(error)=>{
+                reject(error);
+            }
+        })
+    }
 
     return(
         <>
@@ -20,7 +40,13 @@ const CadastroAlunos =()=>{
                 style={{width:"95%"}}
                 />
             </C.LabelAluno>
+            <C.ContainerFotoAluno>
+
             <C.ImagemAluno src={aluno.foto}/>
+            <C.InputCadastroFoto type="file" onChange={(e)=>{
+                carregaFotoAluno(e);
+            }}/>
+            </C.ContainerFotoAluno>
             </C.SubContainerCadastroAlunos>
             <C.SubContainerCadastroAlunos>
             <C.LabelAluno>

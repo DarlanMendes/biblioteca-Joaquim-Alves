@@ -21,6 +21,7 @@ export const ImagemAluno =styled.img`
 height:100px;
 width:100px;
 border: 1px solid rgb(0,0,0,0.3);
+margin: 0px;
 `
 export const SubContainerCadastroAlunos = styled.div`
 display: flex;
@@ -66,4 +67,23 @@ font-size: 20px;
 border-radius: 5px;
 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 margin:20px 0% 10px 0%;
+`
+export const InputCadastroFoto = styled.input`
+display: flex;
+flex-wrap: wrap;
+width:105px;
+background-color: green;
+color:white;
+font-size: 12px;
+border-radius: 5px;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+margin:5px 0% 0px 0%;
+`
+export const ContainerFotoAluno = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height:130px;
+margin:0px;
 `
