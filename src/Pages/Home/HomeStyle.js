@@ -44,13 +44,37 @@ font-size:30px;
 color:blue;
 `
 export const TD = styled.td`
-font-size: 25px;
+display: flex;
+flex-direction: row;
+font-size: 20px;
 text-align: center;
-width:120px;
+justify-content: center;
+align-items: center;
+width:100px;
 height:80px;
 border:1px solid;
 color: black;
+border-radius:5px;
+`
+export const TituloTD = styled.td`
+display: flex;
+flex-direction: row;
+font-size: 20px;
+text-align: center;
+justify-content: center;
+align-items: center;
+width:100px;
+height:40px;
+border:1px solid;
+color: black;
+border-radius:5px;
+background-color: blue;
+color: white;
 `
 export const TR = styled.tr`
-
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+text-align: center;
 `

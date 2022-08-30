@@ -5,50 +5,56 @@ import lupa from '../../assets/lupa.png';
 import { doc } from 'firebase/firestore';
 import Api from '../../Firebase';
 
-export const Home = ({ user, setUser }) => {
+export const Home = ({ setUser }) => {
     const auth = getAuth();
     const [json, setJson] = useState();
+    
     const [inputFiltroPesquisa, setInputFiltroPesquisa] = useState();
-    const [filtroSelec,setFiltroSelec]=useState('Autor');
+    const [filtroSelec, setFiltroSelec] = useState('Autor');
     let CollectionRef = 'livro'
     let lista = [];
+    let listaAlunos = []
 
     const lerBancoLivros = async () => {
         setJson([]);
-       
+         lista =[]
         let livros = await Api.Read(CollectionRef);
         livros.forEach((doc) => {
             lista.push(doc.data());
-
+            console.log(lista);
         })
         setJson(lista);
-        localStorage.setItem('json',JSON.stringify(lista))
-       
+        localStorage.setItem('json', JSON.stringify(lista))
+
     }
+    
 
     const filtroPesquisa = (e) => {
         let jsonFiltrado = [];
         setJson(JSON.parse(localStorage.getItem('json')))
-     
-        if (e.target.value!=='') {
+
+        if (e.target.value !== '') {
             JSON.parse(localStorage.getItem('json')).forEach((filtro) => {
-            if(filtroSelec==='Autor'){
-                if (filtro.livros.autor.toLowerCase().includes(e.target.value.toLowerCase())) {
-                    jsonFiltrado.push(filtro);
-                }}
-            if(filtroSelec==='Titulo'){
-                if (filtro.livros.titulo.toLowerCase().includes(e.target.value.toLowerCase())) {
-                    jsonFiltrado.push(filtro);
-                }}
-            if(filtroSelec==='Editora'){
-                if (filtro.livros.editora.toLowerCase().includes(e.target.value.toLowerCase())) {
-                    jsonFiltrado.push(filtro);
-                }}
+                if (filtroSelec === 'Autor') {
+                    if (filtro.livros.autor.toLowerCase().includes(e.target.value.toLowerCase())) {
+                        jsonFiltrado.push(filtro);
+                    }
+                }
+                if (filtroSelec === 'Titulo') {
+                    if (filtro.livros.titulo.toLowerCase().includes(e.target.value.toLowerCase())) {
+                        jsonFiltrado.push(filtro);
+                    }
+                }
+                if (filtroSelec === 'Editora') {
+                    if (filtro.livros.editora.toLowerCase().includes(e.target.value.toLowerCase())) {
+                        jsonFiltrado.push(filtro);
+                    }
+                }
 
 
             })
             setJson(jsonFiltrado);
-        
+
         }
     }
 
@@ -58,7 +64,9 @@ export const Home = ({ user, setUser }) => {
             if (user) {
                 setUser(localStorage.getItem('user'))
                 lerBancoLivros();
+                
             } else {
+                setUser(false)
                 localStorage.clear();
                 window.location.pathname = '/'
             }
@@ -66,7 +74,8 @@ export const Home = ({ user, setUser }) => {
     }
     useEffect(() => {
         handleCheckIsAuth();
-        console.log(json);
+
+       
     }, [])
 
 
@@ -75,14 +84,14 @@ export const Home = ({ user, setUser }) => {
         <>
             <C.HomeContainer>
                 <C.InputPesquisa placeholder={"Pesquise o seu item "} onChange={(e) => {
-                   setInputFiltroPesquisa(e.target.value);filtroPesquisa(e)
+                    setInputFiltroPesquisa(e.target.value); filtroPesquisa(e)
                 }}
                 />
-                <img src={lupa}  style={{ height: "50px", top: "-55px", left: "37%", position: "relative", zIndex: "3" }} />
+                <img src={lupa} style={{ height: "50px", top: "-55px", left: "37%", position: "relative", zIndex: "3" }} />
                 <C.TabelaLivrosListados>
                     <C.TituloFiltro>Selecione a sua opção de filtragem:
-                        <C.Select name="select" onChange={(e)=>{
-                            setFiltroSelec(e.target.value);console.log(e.target.value)
+                        <C.Select name="select" onChange={(e) => {
+                            setFiltroSelec(e.target.value); console.log(e.target.value)
                         }}>
                             <C.Option value="Autor" selected>Autor</C.Option>
                             <C.Option value="Titulo" >Título</C.Option>
@@ -90,19 +99,21 @@ export const Home = ({ user, setUser }) => {
                         </C.Select>
                     </C.TituloFiltro>
                     <table>
-                        <tr>
-                            <C.TD>N° REGISTRO </C.TD>
-                            <C.TD>DATA </C.TD>
-                            <C.TD>AUTOR</C.TD>
-                            <C.TD>TÍTULO</C.TD>
-                            <C.TD>VOLUME</C.TD>
-                            <C.TD>EXEMPLAR</C.TD>
-                            <C.TD>EDITORA</C.TD>
-                            <C.TD>ANO</C.TD>
-                            <C.TD>PRATELEIRA</C.TD>
-                            <C.TD>ALUNO</C.TD>
-                            <C.TD>DEVOLUÇÃO</C.TD>
-                        </tr>
+                        <tbody>
+                            <C.TR >
+                                <C.TituloTD >N° REGISTRO </C.TituloTD>
+                                <C.TituloTD>DATA </C.TituloTD>
+                                <C.TituloTD>AUTOR</C.TituloTD>
+                                <C.TituloTD>TÍTULO</C.TituloTD>
+                                <C.TituloTD>VOLUME</C.TituloTD>
+                                <C.TituloTD>EXEMPLAR</C.TituloTD>
+                                <C.TituloTD>EDITORA</C.TituloTD>
+                                <C.TituloTD>ANO</C.TituloTD>
+                                <C.TituloTD>PRATELEIRA</C.TituloTD>
+                                <C.TituloTD>ALUNO</C.TituloTD>
+                                <C.TituloTD>DEVOLUÇÃO</C.TituloTD>
+                            </C.TR>
+                        </tbody>
                     </table>
 
                     {json && json.map((valor, chave) => (
@@ -119,8 +130,10 @@ export const Home = ({ user, setUser }) => {
                                     <C.TD>{valor.livros.editora}</C.TD>
                                     <C.TD>{valor.livros.ano}</C.TD>
                                     <C.TD>{valor.livros.prateleira}</C.TD>
-                                    <C.TD>{valor.livros.aluno}</C.TD>
-                                    <C.TD>{valor.livros.devolucao}</C.TD>
+                                    <C.TD>
+                                        
+                                    </C.TD>
+                                    <C.TD></C.TD>
                                 </C.TR>
                             </tbody>
                         </table>
