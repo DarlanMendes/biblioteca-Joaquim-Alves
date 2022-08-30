@@ -8,7 +8,7 @@ export const Cadastro =()=>{
     )
     let collection='livro';
     const handleCadastroLivro=()=>{
-        Api.Update(collection,livro).then(()=>{
+        Api.Update(collection,livro,livro.nReg).then(()=>{
             alert("Livro cadastro com sucesso!");
         }).catch(()=>{
             alert("Ocorreu um erro ao cadastrar o livro.")

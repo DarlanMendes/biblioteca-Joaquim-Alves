@@ -15,14 +15,14 @@ export default{
         return await signOut(auth)
 
     },
-      Update: async (collection, livro) => {
+      Update: async (collection, nome,nomeReg) => {
 
-            let livros = livro;
+            let nomes = nome;
         
-            console.log('livros', livros.nReg)
+            console.log('Nomes', nomeReg)
             // Add a new document in collection "livros"
-            return await setDoc(doc(db, collection, livros.nReg), {
-             livros
+            return await setDoc(doc(db, collection, nomeReg), {
+             nomes
             });
     },
     Read: async (collectionRef) => {

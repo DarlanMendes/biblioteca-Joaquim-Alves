@@ -11,15 +11,15 @@ top:150px;
 left:20vw;
 margin: auto;
 padding:50px 0px 50px 50px;
-height:380px;
+height:420px;
 width:700px;
 border: 1px solid rgb(0,0,0,0.2);
 border-radius: 10px;
 box-shadow: 2px 5px 16px 0px #0B325E;
 `
 export const ImagemAluno =styled.img`
-height:100px;
-width:100px;
+height:120px;
+width:120px;
 border: 1px solid rgb(0,0,0,0.3);
 margin: 0px;
 `
@@ -30,6 +30,14 @@ justify-content: start;
 align-items: center;
 width:100%;
 margin: 0px 0 0 0;
+`
+export const SubContainerCadastroNomeAlunos = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: center;
+width:100%;
+margin: 0px 0 0 -25px;
 `
 export const InputAluno = styled.input`
 height:35px;
@@ -84,6 +92,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-height:130px;
+height:150px;
 margin:0px;
 `
