@@ -2,13 +2,13 @@ import { applyActionCode, getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import * as C from "./HomeStyle";
 import lupa from '../../assets/lupa.png';
-import { doc } from 'firebase/firestore';
 import Api from '../../Firebase';
+
 
 export const Home = ({ setUser }) => {
     const auth = getAuth();
     const [json, setJson] = useState();
-    
+
     const [inputFiltroPesquisa, setInputFiltroPesquisa] = useState();
     const [filtroSelec, setFiltroSelec] = useState('Autor');
     let CollectionRef = 'livro'
@@ -17,7 +17,7 @@ export const Home = ({ setUser }) => {
 
     const lerBancoLivros = async () => {
         setJson([]);
-         lista =[]
+        lista = []
         let livros = await Api.Read(CollectionRef);
         livros.forEach((doc) => {
             lista.push(doc.data());
@@ -27,7 +27,7 @@ export const Home = ({ setUser }) => {
         localStorage.setItem('json', JSON.stringify(lista))
 
     }
-    
+
 
     const filtroPesquisa = (e) => {
         let jsonFiltrado = [];
@@ -64,7 +64,7 @@ export const Home = ({ setUser }) => {
             if (user) {
                 setUser(localStorage.getItem('user'))
                 lerBancoLivros();
-                
+
             } else {
                 setUser(false)
                 localStorage.clear();
@@ -75,7 +75,7 @@ export const Home = ({ setUser }) => {
     useEffect(() => {
         handleCheckIsAuth();
 
-       
+
     }, [])
 
 
@@ -93,52 +93,41 @@ export const Home = ({ setUser }) => {
                         <C.Select name="select" onChange={(e) => {
                             setFiltroSelec(e.target.value); console.log(e.target.value)
                         }}>
-                            <C.Option value="Autor" selected>Autor</C.Option>
+                            <C.Option value="Autor" >Autor</C.Option>
                             <C.Option value="Titulo" >Título</C.Option>
                             <C.Option value="Editora">Editora</C.Option>
                         </C.Select>
                     </C.TituloFiltro>
-                    <table>
-                        <tbody>
-                            <C.TR >
-                                <C.TituloTD >N° REGISTRO </C.TituloTD>
-                                <C.TituloTD>DATA </C.TituloTD>
-                                <C.TituloTD>AUTOR</C.TituloTD>
-                                <C.TituloTD>TÍTULO</C.TituloTD>
-                                <C.TituloTD>VOLUME</C.TituloTD>
-                                <C.TituloTD>EXEMPLAR</C.TituloTD>
-                                <C.TituloTD>EDITORA</C.TituloTD>
-                                <C.TituloTD>ANO</C.TituloTD>
-                                <C.TituloTD>PRATELEIRA</C.TituloTD>
-                                <C.TituloTD>ALUNO</C.TituloTD>
-                                <C.TituloTD>DEVOLUÇÃO</C.TituloTD>
-                            </C.TR>
-                        </tbody>
-                    </table>
 
-                    {json && json.map((valor, chave) => (
+                    <C.ContainerLivro>
 
-                        <table key={chave}>
-                            <tbody>
-                                <C.TR>
-                                    <C.TD>{valor.livros.nReg}</C.TD>
-                                    <C.TD>{valor.livros.data}</C.TD>
-                                    <C.TD>{valor.livros.autor}</C.TD>
-                                    <C.TD>{valor.livros.titulo}</C.TD>
-                                    <C.TD>{valor.livros.volume}</C.TD>
-                                    <C.TD>{valor.livros.exemplar}</C.TD>
-                                    <C.TD>{valor.livros.editora}</C.TD>
-                                    <C.TD>{valor.livros.ano}</C.TD>
-                                    <C.TD>{valor.livros.prateleira}</C.TD>
-                                    <C.TD>
-                                        
-                                    </C.TD>
-                                    <C.TD></C.TD>
-                                </C.TR>
-                            </tbody>
-                        </table>
+                        {json && json.map((valor, chave) => (
+                            <C.AreaContainerLivro >
+                                <div key={chave}>
 
-                    ))}
+                                    <C.ContainerLivroHome >
+                                        <C.ImagemContainerLivro src={valor&&valor.livros.capa} />
+                                        <C.TextoContainerLivro>
+                                            <C.LabelTextoLivro>
+                                                N° Registro: {valor&&valor.livros.nReg}
+                                            </C.LabelTextoLivro>
+                                            <C.LabelTextoLivro>
+                                               Título: {valor&&valor.livros.titulo}
+                                            </C.LabelTextoLivro>
+                                            <C.LabelTextoLivro>
+                                                Autor: {valor.livros.autor}
+                                            </C.LabelTextoLivro>
+                                            <C.LabelTextoLivro>
+                                               Editora: {valor&&valor.livros.editora}
+                                            </C.LabelTextoLivro>
+                                        </C.TextoContainerLivro>
+                                    </C.ContainerLivroHome>
+                                </div>
+
+
+                            </C.AreaContainerLivro>
+                        ))}
+                    </C.ContainerLivro>
                 </C.TabelaLivrosListados>
             </C.HomeContainer>
         </>

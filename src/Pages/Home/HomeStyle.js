@@ -3,10 +3,12 @@ import styled from "styled-components";
 export const HomeContainer = styled.div`
 padding-top:120px;
 display: flex;
+flex-wrap: wrap;
 flex-direction: column;
 justify-content: start;
 align-items: center;
 height:100%;
+width:100vw;
 
 `
 export const InputPesquisa = styled.input`
@@ -25,6 +27,8 @@ padding:30px;
 border:2px solid rgb(0,0,0,0.4);
 border-radius: 9px;
 height:60vh;
+width:80%;
+overflow-y: scroll;
 `
 
 export const Select = styled.select`
@@ -43,38 +47,50 @@ export const TituloFiltro = styled.h2`
 font-size:30px;
 color:blue;
 `
-export const TD = styled.td`
+
+
+export const ContainerLivro = styled.div`
 display: flex;
-flex-direction: row;
-font-size: 20px;
-text-align: center;
-justify-content: center;
+
+flex-wrap: wrap;
+width:100%;
+background-color: red;
 align-items: center;
-width:100px;
-height:80px;
-border:1px solid;
-color: black;
-border-radius:5px;
+justify-content: center;
+text-align: center;
 `
-export const TituloTD = styled.td`
+export const AreaContainerLivro = styled.div`
 display: flex;
 flex-direction: row;
-font-size: 20px;
-text-align: center;
-justify-content: center;
-align-items: center;
-width:100px;
-height:40px;
-border:1px solid;
-color: black;
-border-radius:5px;
-background-color: blue;
-color: white;
+flex-wrap: wrap;
+width:220px;
+background-color: red;
 `
-export const TR = styled.tr`
+export const ContainerLivroHome = styled.div`
 display: flex;
-flex-direction: row;
+flex-direction: column;
+justify-content: start;
 align-items: center;
-justify-content: center;
-text-align: center;
+height:300px;
+width:200px;
+background-color: white;
+border:1px solid rgb(0,0,0,0.5);
+border-radius: 5px;
+`
+export const ImagemContainerLivro =styled.img`
+height:200px;
+width:200px;
+border-bottom: 0.5px solid rgb(0,0,0,0.5);
+object-fit: cover;
+`
+export const TextoContainerLivro = styled.div`
+height:100px;
+width:200px;
+display: flex;
+flex-direction: column;
+padding:10px 0px 10px 20px;
+`
+export const LabelTextoLivro = styled.label`
+height:20px;
+text-align: start;
 `

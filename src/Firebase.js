@@ -16,14 +16,21 @@ export default{
 
     },
       Update: async (collection, nome,nomeReg) => {
-
-            let nomes = nome;
-        
-            console.log('Nomes', nomeReg)
-            // Add a new document in collection "livros"
+        if(collection==='livro'){
+            let livros = nome;
             return await setDoc(doc(db, collection, nomeReg), {
-             nomes
-            });
+                livros
+               });
+        }
+            if(collection==='aluno'){
+                let alunos= nome;
+                return await setDoc(doc(db, collection, nomeReg), {
+                    alunos
+                });
+            }
+      
+            
+         
     },
     Read: async (collectionRef) => {
 
