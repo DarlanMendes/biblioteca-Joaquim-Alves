@@ -51,7 +51,6 @@ color:blue;
 
 export const ContainerLivro = styled.div`
 display: flex;
-
 flex-wrap: wrap;
 width:100%;
 background-color: red;
@@ -65,20 +64,21 @@ flex-direction: row;
 flex-wrap: wrap;
 width:220px;
 background-color: red;
+margin: 20px 0px;
 `
 export const ContainerLivroHome = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: start;
 align-items: center;
-height:300px;
+height:370px;
 width:200px;
 background-color: white;
 border:1px solid rgb(0,0,0,0.5);
 border-radius: 5px;
 `
 export const ImagemContainerLivro =styled.img`
-height:200px;
+height:250px;
 width:200px;
 border-bottom: 0.5px solid rgb(0,0,0,0.5);
 object-fit: cover;

@@ -5,7 +5,8 @@ import lupa from '../../assets/lupa.png';
 import Api from '../../Firebase';
 
 
-export const Home = ({ setUser }) => {
+
+export const Home = ({ setUser, setModalShowed, setLivroItemModal }) => {
     const auth = getAuth();
     const [json, setJson] = useState();
 
@@ -21,7 +22,7 @@ export const Home = ({ setUser }) => {
         let livros = await Api.Read(CollectionRef);
         livros.forEach((doc) => {
             lista.push(doc.data());
-            console.log(lista);
+
         })
         setJson(lista);
         localStorage.setItem('json', JSON.stringify(lista))
@@ -72,6 +73,9 @@ export const Home = ({ setUser }) => {
             }
         });
     }
+
+
+
     useEffect(() => {
         handleCheckIsAuth();
 
@@ -91,7 +95,7 @@ export const Home = ({ setUser }) => {
                 <C.TabelaLivrosListados>
                     <C.TituloFiltro>Selecione a sua opção de filtragem:
                         <C.Select name="select" onChange={(e) => {
-                            setFiltroSelec(e.target.value); console.log(e.target.value)
+                            setFiltroSelec(e.target.value);
                         }}>
                             <C.Option value="Autor" >Autor</C.Option>
                             <C.Option value="Titulo" >Título</C.Option>
@@ -99,37 +103,48 @@ export const Home = ({ setUser }) => {
                         </C.Select>
                     </C.TituloFiltro>
 
-                    <C.ContainerLivro>
+                    <C.ContainerLivro  >
 
                         {json && json.map((valor, chave) => (
                             <C.AreaContainerLivro >
-                                <div key={chave}>
+                                <div key={chave} >
 
-                                    <C.ContainerLivroHome >
-                                        <C.ImagemContainerLivro src={valor&&valor.livros.capa} />
+
+                                    <C.ContainerLivroHome onClick={() => {
+                                        setLivroItemModal(valor);
+                                        setModalShowed(true)
+                                    }}>
+                                        <C.ImagemContainerLivro src={valor && valor.livros.capa} />
                                         <C.TextoContainerLivro>
                                             <C.LabelTextoLivro>
-                                                N° Registro: {valor&&valor.livros.nReg}
+                                                N° Registro: {valor && valor.livros.nReg}
                                             </C.LabelTextoLivro>
                                             <C.LabelTextoLivro>
-                                               Título: {valor&&valor.livros.titulo}
+                                                Título: {valor && valor.livros.titulo}
                                             </C.LabelTextoLivro>
                                             <C.LabelTextoLivro>
                                                 Autor: {valor.livros.autor}
                                             </C.LabelTextoLivro>
                                             <C.LabelTextoLivro>
-                                               Editora: {valor&&valor.livros.editora}
+                                                Editora: {valor && valor.livros.editora}
                                             </C.LabelTextoLivro>
                                         </C.TextoContainerLivro>
+
                                     </C.ContainerLivroHome>
+
                                 </div>
 
 
                             </C.AreaContainerLivro>
+
                         ))}
+
                     </C.ContainerLivro>
+
                 </C.TabelaLivrosListados>
+
             </C.HomeContainer>
+
         </>
     )
 }
