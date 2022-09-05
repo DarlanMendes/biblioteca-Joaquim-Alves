@@ -16,9 +16,7 @@ function App() {
   const [modalShowed, setModalShowed] = useState();
   const [livroItemModal, setLivroItemModal] = useState();
 
-  useEffect(() => {
-    console.log(livroItemModal)
-  }, [livroItemModal])
+ 
   return (
     <div className="App">
       <BrowserRouter>
