@@ -7,8 +7,7 @@ import { Navbar } from './components/Navbar/Navbar';
 import { useState } from 'react';
 import CadastroAlunos from './Pages/CadastroAlunos/CadastroAlunos';
 import { Modal } from './components/Modal';
-import { ModalLivro } from './components/ModalLivro';
-import { useEffect } from 'react';
+
 
 
 function App() {

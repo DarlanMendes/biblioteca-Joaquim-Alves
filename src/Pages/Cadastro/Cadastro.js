@@ -38,7 +38,7 @@ export const Cadastro = () => {
     }
 
     return (
-        <>
+        <C.CadastroLivroContainer>
             <C.CadastroContainer>
             <C.LabelLivro style={{height:"250px"}}>
                 Capa do livro:
@@ -108,6 +108,6 @@ export const Cadastro = () => {
                 
             </C.CadastroContainer>
 
-        </>
+        </C.CadastroLivroContainer>
     )
 }

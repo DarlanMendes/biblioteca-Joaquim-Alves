@@ -20,11 +20,11 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-height:600px;
-width:600px;
+height:800px;
+width:700px;
 background-color: white;
 border-radius: 25px;
-font-size: 80px;
+font-size: 70px;
 z-index:30;
-
+overflow-y: auto;
 `

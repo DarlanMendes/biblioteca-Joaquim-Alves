@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 
+
+export const ContainerPrincipalCadastroAlunos=styled.div`
+height:100vh;
+width:100vw;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+padding: 100px auto;
+`
 export const  ContainerCadastroAlunos = styled.div`
-position: fixed;
 display:flex;
 flex-direction: column;
 align-items: center;
 justify-content: start;
 gap:2px;
-top:150px; 
-left:20vw;
 margin: auto;
 padding:50px 0px 50px 50px;
 height:420px;

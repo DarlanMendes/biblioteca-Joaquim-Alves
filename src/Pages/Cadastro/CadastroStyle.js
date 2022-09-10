@@ -1,17 +1,22 @@
 import styled from 'styled-components';
 
+
+export const CadastroLivroContainer = styled.div`
+height:100vh;
+width:100vw;
+display: flex;
+align-items: center;
+justify-content: center;
+
+`
 export const CadastroContainer = styled.div`
-position: fixed;
 display:flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-gap:2px;
-top:120px; 
-left:20vw;
 margin: auto;
 padding:0 5%;
-height:800px;
+height:730px;
 width:800px;
 border: 1px solid rgb(0,0,0,0.2);
 border-radius: 10px;

@@ -6,6 +6,7 @@ import { signOut } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 
+
 const db = getFirestore(app);
 export default{
     Login: async(auth,email,password)=>{
@@ -34,7 +35,7 @@ export default{
     },
     Read: async (collectionRef) => {
 
-        let listaAlunos = await getDocs(collection(db, collectionRef));
-        return listaAlunos;
+        let lista = await getDocs(collection(db, collectionRef));
+        return lista;
     }
 }

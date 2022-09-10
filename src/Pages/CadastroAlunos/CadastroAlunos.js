@@ -37,7 +37,7 @@ const CadastroAlunos = () => {
     }
 
     return (
-        <>
+        <C.ContainerPrincipalCadastroAlunos>
             <C.ContainerCadastroAlunos>
                 <C.SubContainerCadastroAlunos >
                     <C.SubContainerCadastroNomeAlunos style={{ width: "70%" }}>
@@ -75,7 +75,7 @@ const CadastroAlunos = () => {
                         <C.InputSelectAluno onChange={(e) => {
                             aluno.serie = e.target.value;
                         }}>
-                            <C.OptionAluno value="" selected></C.OptionAluno>
+                            <C.OptionAluno  defaultValue=""></C.OptionAluno>
                             <C.OptionAluno value="1° SÉRIE">1° SÉRIE</C.OptionAluno>
                             <C.OptionAluno value="2° SÉRIE">2° SÉRIE</C.OptionAluno>
                             <C.OptionAluno value="3° SÉRIE">3° SÉRIE</C.OptionAluno>
@@ -87,7 +87,7 @@ const CadastroAlunos = () => {
                         <C.InputSelectAluno onChange={(e) => {
                             aluno.turma = e.target.value;
                         }}>
-                            <C.OptionAluno value="" selected></C.OptionAluno>
+                            <C.OptionAluno defaultValue=""></C.OptionAluno>
                             <C.OptionAluno value="A">A</C.OptionAluno>
                             <C.OptionAluno value="B">B</C.OptionAluno>
                             <C.OptionAluno value="C">C</C.OptionAluno>
@@ -101,7 +101,7 @@ const CadastroAlunos = () => {
                         <C.InputSelectAluno onChange={(e) => {
                             aluno.turno = e.target.value;
                         }}>
-                            <C.OptionAluno value="" selected></C.OptionAluno>
+                            <C.OptionAluno defaultValue=""></C.OptionAluno>
                             <C.OptionAluno value="MANHÃ">MANHÃ</C.OptionAluno>
                             <C.OptionAluno value="TARDE">TARDE</C.OptionAluno>
                             <C.OptionAluno value="NOITE">NOITE</C.OptionAluno>
@@ -130,7 +130,7 @@ const CadastroAlunos = () => {
 
                 <C.BotaoCadastro onClick={handleCadastroAluno}>Cadastrar</C.BotaoCadastro>
             </C.ContainerCadastroAlunos>
-        </>
+        </C.ContainerPrincipalCadastroAlunos>
 
     );
 }
